@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Fira Code', monospace;
+  background: #ffffff;
+}
+
+:root {
+  --greenColor: #46A358;
+  --fontFamiliy: 'Fira Code', monospace;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.nocopy {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+  supported by Chrome, Edge, Opera and Firefox */
+}
