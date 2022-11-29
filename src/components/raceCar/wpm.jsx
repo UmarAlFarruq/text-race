@@ -1,45 +1,31 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 
 const Wpm = ({ time, RandomNum }) => {
-    const Ref = useRef(null);
-    const [timer, setTimer] = useState(0);
-    const [num, setNum] = useState(0);
-    useEffect(() => {
-        setNum(num + timer);
-        RandomNum(num)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [timer])
-    const getTimeRemaining = (e) => {
-        const total = Date.parse(e) - Date.parse(new Date());
-        return {
-            total,
-        };
-    }
-    const startTimer = (e) => {
-        let { total, } = getTimeRemaining(e);
-        if (total >= 0)
-            setTimer(Math.floor(10 * Math.random()))
-    }
-    const clearTimer = (e) => {
-        setTimer(0);
-        if (Ref.current) clearInterval(Ref.current);
-        const id = setInterval(() => {
-            startTimer(e);
-        }, 5000)
-        Ref.current = id;
-    }
+    const [seconds, setSeconds] = useState(0);
+    var timer;
 
-    const getDeadTime = () => {
-        let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds() + time);
-        return deadline;
-    }
+
+    RandomNum(seconds)
+
     useEffect(() => {
-        clearTimer(getDeadTime());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    return `${num}`;
+        // eslint-disable-next-line react-hooks/exhaustive-deps, no-unused-vars
+        timer = setInterval(() => {
+            let random = Math.floor(Math.random() * 10);
+            setSeconds(seconds + random);
+
+        }, time * 1000)
+
+        if (seconds < 0) stop();
+        return () => clearInterval(timer);
+
+
+    }, [seconds]);
+    const stop = () => { clearInterval(timer) }
+    // console.log('random');
+    return (
+        <>{seconds}</>
+    );
 }
 
 export default Wpm;

@@ -33,15 +33,25 @@ const ContaindrAnime = keyframes`
     }
 `
 
+const HereAnime = keyframes`
+    0%{ opacity: 1; scale:1; }
+    20%{ opacity: 0.7; scale:0.95;}
+    40%{ opacity: 1;scale:1;}
+    60%{ opacity: 0.7;  scale:0.95;}
+    80%{ opacity: 1;scale:1;}
+    100%{ opacity: 0.3;}
+`
+
 
 export const Container = styled.div`
     display: flex;
-    width: 100%;
-    height: fit-content;
+    width: 980px;
     min-height: 120px;
+    margin-left: ${({left})=>left+'px'};
+    height:fit-content;
+    box-sizing: border-box;
     border: ${({ bg }) => bg && `2px solid rgb(197, 243, 241)`};
     background-color:${({ bg }) => bg ? 'aliceblue' : 'white'};
-    /* box-shadow: ${({ bg }) => bg && `0 0 12px 0 rgba(197, 243, 241,0.7)`} ; */
     border-radius: 8px;
     padding: 15px;
     flex-direction: column;
@@ -52,27 +62,28 @@ export const Container = styled.div`
     animation-iteration-count: linear;
 `
 export const WrapperInput = styled.div`
+    width: 1020px;
+    position: relative;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+
 `
 export const WrapperText = styled.div`
-    display: flex;
-    flex-wrap: wrap;
     padding: 0px;
     margin: 0;
     font-family:'Times New Roman', Times, ;
+    position:relative ;
 `
 export const Input = styled.input`
     ${({ type }) => getInputStyle(type)}
-    width: 100%;
+    width:940px;
     height: 30px;
     border-radius: 5px;
     font-size: 14px;
-    padding: 10px;
+    /* padding: 10px; */
     &:focus {
         outline: none;
     }
-   
 `
 export const P = styled.p`
     font-size: 16px;
@@ -83,6 +94,7 @@ export const P = styled.p`
     font-weight: 500;
     color:black;
     line-height: 23px;
+    position: relative;
 `
 export const Span = styled.span`
     border-right: 1px solid #222;
@@ -91,7 +103,6 @@ export const Span = styled.span`
     animation-iteration-count: infinite;
     width: 1px;
 `
-
 export const Active = styled.span`
     border-bottom: 1px solid black;
     /* border-right: 1px solid black; */
@@ -106,6 +117,50 @@ export const Error = styled.span`
     border-bottom: 1px solid #d08383;
     background-color:#d08383 ;
     border-radius: 3px;
+`
+export const Here = styled.span`
+    position: absolute;
+    left:${({ left }) => `${left}%`};
+    top:${({ top }) => top + 'px' || '7px'} ;
+    width:fit-content;
+    padding: 5px 15px;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background:#99cc00 ;
+    opacity: 0;
+    z-index:1;
+    animation: ${HereAnime} 7s linear;
+    &::before{
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid #99cc00;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    }
+`
+export const WrapperInputAndText = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    width:100%;
+    /* margin-left: 10px; */
+`
+
+export const DivTime = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 970px;
 `
 
 

@@ -17,10 +17,10 @@ const TimerNew = ({ time, GameOver, textOver }) => {
         timer = setInterval(() => {
             if (!textOver) {
                 setSeconds(seconds - 1);
-                GameOver(lifeTime, false)
+                GameOver(lifeTime, false);
             }
             if (seconds === 0) {
-                if (minuts > 0) {
+                 if (minuts > 0) {
                     setMinuts(minuts - 1);
                     setSeconds(59)
                 } else stop();
